@@ -57,26 +57,28 @@ router.post('/', (req, res) => {
 });
 
 // PUT /api/users/1
-// updates a user
 router.put('/:id', (req, res) => {
+    // expects {username: 'Lernantino', email: 'lernantino@gmail.com', password: 'password1234'}
+  
+    // pass in req.body instead to only update what's passed through
     User.update(req.body, {
-        where: {
-            id: req.params.id
-        }
+      individualHooks: true,
+      where: {
+        id: req.params.id
+      }
     })
-    .then(dbUserData => {
+      .then(dbUserData => {
         if (!dbUserData[0]) {
-            res.status(404).json({ message: 'No user found with this id' });
-            return;
+          res.status(404).json({ message: 'No user found with this id' });
+          return;
         }
-        res.status(dbUserData);
-    })
-    .catch(err => {
+        res.json(dbUserData);
+      })
+      .catch(err => {
         console.log(err);
-        res.status(500).json({ message: 'There has been an error' });
-    });
-
-});
+        res.status(500).json(err);
+      });
+  });
 
 //Delete /api/users/1
 // deletes a user
