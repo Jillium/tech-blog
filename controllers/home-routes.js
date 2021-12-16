@@ -9,7 +9,7 @@ router.get('/', (rez, res) => {
             'title',
             'content',
             'created_at'
-            
+
         ],
         include: [
             {
@@ -18,15 +18,15 @@ router.get('/', (rez, res) => {
             }
         ]
     })
-    .then(dbPostData => {
-        const posts = dbPostData.map(post => post.get({ plain: true }));
-        res.render('homepage', { posts });
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json({ message: 'There has been an error' });
-    });
-    
+        .then(dbPostData => {
+            const posts = dbPostData.map(post => post.get({ plain: true }));
+            res.render('homepage', { posts });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({ message: 'There has been an error' });
+        });
+
 });
 
 router.get('/login', (req, res) => {
@@ -48,66 +48,34 @@ router.get('/', (req, res) => {
 
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
-      res.redirect('/');
-      return;
+        res.redirect('/');
+        return;
     }
     res.render('login');
-  });
-  
-  
-  // route for session/cookies
-  router.get('/', (req, res) => {
+});
+
+
+// route for session/cookies
+router.get('/', (req, res) => {
     console.log(req.session);
-  
+
     // other logic...
-  });
-  
-  //route for single post page
-  router.get('/post/:id', (req, res) => {
-    Post.findOne({
-      where: {
-        id: req.params.id
-      },
-      attributes: [
-        'id',
-        'title',
-        'content',
-        'created_at',
-        
-      ],
-      include: [
-        {
-          model: Comment,
-          attributes: ['id', 'text', 'post_id', 'user_id', 'created_at'],
-          include: {
-            model: User,
-            attributes: ['username']
-          }
-        },
-        {
-          model: User,
-          attributes: ['username']
-        }
-      ]
-    })
-    .then(dbPostData => {
-      if (!dbPostData) {
-        res.status(404).json({ message: 'No post found with this id' });
-        return;
+});
+
+//route for single post page
+router.get('/post/:id', (req, res) => {
+    const post = {
+      id: 1,
+      title: 'Handlebars Docs',
+      content: 'How to use handlebars',
+      created_at: new Date(),
+      comments: [{}, {}],
+      user: {
+        username: 'test_user'
       }
+    };
   
-      // serialize the data
-      const post = dbPostData.get({ plain: true });
-  
-      // pass data to the template
-      res.render('single-post', { post, loggedIn: req.session.loggedIn });
-  
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+    res.render('single-post', { post });
   });
-  
 
 module.exports = router;
