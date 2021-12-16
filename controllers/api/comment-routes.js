@@ -11,17 +11,21 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    Comment.create({
-        text: req.body.text,
-        user_id: req.body.user_id,
-        post_id: req.body.post_id
-    })
+    // check the session
+    if (req.session) {
+      Comment.create({
+        text: req.body.comment_text,
+        post_id: req.body.post_id,
+        // use the id from the session
+        user_id: req.session.user_id
+      })
         .then(dbCommentData => res.json(dbCommentData))
         .catch(err => {
-            console.log(err);
-            res.status(400).json({ message: 'There has been an error' });
+          console.log(err);
+          res.status(400).json(err);
         });
-});
+    }
+  });
 
 router.delete('/:id', (req, res) => {
     Comment.destroy({

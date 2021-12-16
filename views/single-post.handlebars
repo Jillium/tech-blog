@@ -1,12 +1,44 @@
- <article class="post">
-      <div class="title" style="background-color: #e3f2fd;">
-        <span>{{title}}</span>
-        <span>Posted by {{user.username}} on
-        {{created_at}}
-        |</span>
-      </div>
-      
-      <div>
-          {{content}}
-      </div>
-    </article>
+<article class="post">
+    <div class="title" style="background-color: #e3f2fd;">
+        <span>{{post.title}}</span>
+        <span>Posted by {{post.user.username}} on
+            {{post.created_at}}
+            |</span>
+    </div>
+    <div class="meta">
+        <a href="/post/{{id}}">{{post.comments.length}} comment(s)</a>
+    </div>
+
+    <div>
+        {{post.content}}
+    </div>
+</article>
+{{#if loggedIn}}
+<form class="comment-form">
+    <div>
+        <textarea name="comment-body"></textarea>
+    </div>
+
+    <div>
+        <button type="submit">add comment</button>
+        <button type="button" class="upvote-btn">upvote</button>
+    </div>
+</form>
+{{/if}}
+
+<div class="comments">
+    {{#each post.comments}}
+    <section class="comment">
+        <div class="meta">
+            {{user.username}} on {{created_at}}
+        </div>
+        <div class="text">
+            {{text}}
+        </div>
+    </section>
+    {{/each}}
+</div>
+
+{{#if loggedIn}}
+<script src="/javascript/comment.js"></script>
+{{/if}}

@@ -21,8 +21,12 @@
                       
                         <a class="navbar-brand" href="#">Dashboard</a>
                       
-                        <button type="button" id="login" class="btn btn-info m-2">Login</button>
+                        
+                        {{#if loggedIn}}
                         <button type="button" id="logout" class="btn btn-info m-2">Logout</button>
+                        {{else}}
+                        <button type="button" id="login" class="btn btn-info m-2">Login</button>
+                        {{/if}}
                       
                       
                   
@@ -44,7 +48,8 @@
   
 
     </div>
-
- <script src="/javascript/logout.js"></script>   
+{{#if loggedIn}}
+ <script src="/public/javascript/logout.js"></script>  
+ {{/if}} 
 </body>
 </html>
