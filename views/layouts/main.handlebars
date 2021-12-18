@@ -15,7 +15,7 @@
         <header>
             <nav class="navbar navbar-expand-lg navbar-light my-2" style="background-color: #e3f2fd;">
                 <div class="container-fluid">
-                  <a class="navbar-brand" href="#">Home</a>
+                  <a class="navbar-brand" href="/">Home</a>
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     
                       
@@ -23,9 +23,9 @@
                       
                         
                         {{#if loggedIn}}
-                        <button type="button" id="logout" class="btn btn-info m-2">Logout</button>
+                        <a class="navbar-brand" href="/logout">Login</a>
                         {{else}}
-                        <button type="button" id="login" class="btn btn-info m-2">Login</button>
+                        <a class="navbar-brand" href="/login">Login</a>
                         {{/if}}
                       
                       

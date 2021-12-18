@@ -3,13 +3,14 @@
         <span>{{title}}</span>
         <span>Posted by {{user.username}} on
         {{format_date created_at}}
-        |</span>
+        </span>
       </div>
-      <div class="meta">
-        <a href="/post/{{id}}">{{format_plural "comment" comments.length}} comment(s)</a>
-      </div>
-      
       <div>
           {{content}}
       </div>
+      <div class="meta">
+        <a href="/post/{{id}}">{{format_plural "comment" comments.length}}</a>
+      </div>
+      
+      
     </article>
