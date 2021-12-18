@@ -29,6 +29,7 @@ router.get('/', (req, res) => {
       .then(dbPostData => {
         // pass a single post object into the homepage template
         const posts = dbPostData.map(post => post.get({ plain: true }));
+        res.render('homepage', { posts, loggedIn: req.session.loggedIn });
       })
       .catch(err => {
         console.log(err);
@@ -36,9 +37,25 @@ router.get('/', (req, res) => {
       });
   });
 
+router.get('/login', (req, res) => {
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
+    res.render('login');
+});
+
 router.get('/signup', (req, res) => {
     res.render('signup');
 });
+
+router.get('/logout', (req, res) => {
+  if (!req.session.loggedIn) {
+    res.redirect('/');
+    return;
+  }
+  res.render('login');
+})
 
 // route for cookies
 router.get('/', (req, res) => {
@@ -52,14 +69,6 @@ router.get('/login', (req, res) => {
     }
     res.render('login');
 });
-
-router.get('/logout', (req, res) => {
-  if (!req.session.loggedIn) {
-    res.redirect('/');
-    return;
-  }
-  res.render('login');
-})
 
 
 // route for session/cookies
