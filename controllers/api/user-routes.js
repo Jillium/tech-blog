@@ -81,7 +81,7 @@ router.post('/', (req, res) => {
 });
 //login route
 router.post('/login', (req, res) => {
-    // expects {email: 'lernantino@gmail.com', password: 'password1234'}
+    // expects {username: 'username', password: 'password1234'}
     User.findOne({
       where: {
         username: req.body.username
@@ -160,6 +160,7 @@ router.post('/logout', (req, res) => {
     req.session.destroy(() => {
       res.status(204).end();
     });
+    res.render('homepage');
   }
   else {
     res.status(404).end();
