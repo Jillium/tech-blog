@@ -10,23 +10,24 @@
     <title>Tech Blog</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="../../public/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
 <body>
     <div class="wrapper">
         <header>
-            <nav class="navbar navbar-expand-lg navbar-light my-2" style="background-color: #e3f2fd;">
+            <nav class="navbar navbar-expand-lg navbar-light my-2" style="background-color: #30475e">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="/">Home</a>
+                    <h1 class="title">Tech Blog</h1>
+                    <a class="navbar-brand" style="color: #f5f5f5;" href="/">Home</a>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
 
-                        <a class="navbar-brand" href="/dashboard">Dashboard</a>
+                        <a class="navbar-brand" style="color: #f5f5f5;" href="/dashboard">Dashboard</a>
 
 
                         {{#if loggedIn}}
-                        <a class="navbar-brand" href="/logout">
+                        <a class="navbar-brand" style="color: #f5f5f5;" href="/logout">
                             <btn id="logout">Logout</btn>
                         </a>
                         {{else}}
@@ -37,7 +38,7 @@
 
 
                     </div>
-                    <h1>Tech Blog</h1>
+
                 </div>
             </nav>
 
@@ -56,7 +57,7 @@
 
     </div>
     {{#if loggedIn}}
-   
+
     <script src="/javascript/logout.js"></script>
     {{/if}}
 </body>

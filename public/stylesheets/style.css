@@ -1,6 +1,54 @@
-.btn {
-    background-color: black;
+
+.title {
+    margin-right: 20px;
+    color: #f5f5f5;
+    
+  
 }
-* {
-    background-color: black;
+.blue-text {
+    color: #30475e;
 }
+
+.post {
+    width: 100%;
+}
+
+.post-list {
+    width: 100%;
+}
+
+.post-title {
+    background-color: #f5f5f5;
+    font-size: 30px;
+    color: #30475e;
+}
+
+.single-post-title {
+    background-color: #f5f5f5;
+    font-size: 20px;
+    color: #30475e;
+}
+
+.post-content {
+    background-color: #f0ece3;
+}
+
+a {
+    color: #f5f5f5;
+    text-decoration: none;
+}
+
+.edit-link {
+    color: #30475e;
+}
+
+.meta {
+    background-color: #30475e;
+}
+
+
+a:hover {
+    color: yellow;
+}
+
+
