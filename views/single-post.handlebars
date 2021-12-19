@@ -5,12 +5,14 @@
             {{post.created_at}}
             |</span>
     </div>
-    <div class="meta">
-        <a href="/post/{{id}}">{{post.comments.length}} comment(s)</a>
-    </div>
+    
 
     <div>
         {{post.content}}
+    </div>
+
+    <div class="meta">
+        <a href="/post/{{id}}">{{post.comments.length}} comment(s)</a>
     </div>
 </article>
 {{#if loggedIn}}
@@ -27,6 +29,9 @@
 {{/if}}
 
 {{> comments post.comments}}
+
+
+
 
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>

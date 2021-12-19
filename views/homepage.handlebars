@@ -1,8 +1,14 @@
 <ol class="post-list">
-    {{#each posts as |post|}}
+  {{#each posts as |post|}}
   <li>
     {{> post-info post }}
   </li>
   {{/each}}
 </ol>
 
+{{#if loggedIn}}
+<div>
+  <a href="/dashboard"><button type="button">Create New Post</button></a>
+</div>
+
+{{/if}}
