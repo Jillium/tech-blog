@@ -12,7 +12,17 @@ const helpers = require('./utils/helpers');
 const app = express();
 const PORT = process.env.PORT || 3006;
 
-const sess = {
+let sess;
+if (process.env.JAWSDB_SC) {
+    sess = {
+        secret: process.env.JAWSDB_SC,
+        cookie: {},
+        resave: false,
+        saveUninitialized: true,
+        store: new SequelizeStore({ db: sequelize })
+    }
+} else sess = {
+
     secret: process.env.SECRET,
     cookie: {},
     resave: false,
