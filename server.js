@@ -52,6 +52,6 @@ app.use(require('./controllers'));
 
 
 // turn on connection to database and server
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log("I'm listening!"));
 });
