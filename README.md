@@ -18,6 +18,8 @@
 
   ## Project Link
   https://infinite-beach-07977.herokuapp.com/
+
+  <img src="../public/assets/images/screenshot.png">
   
   
   ## Languages Used 
