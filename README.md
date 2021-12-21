@@ -16,7 +16,8 @@
   ## Project Description 
   Made for a coding bootcamp with the University of Utah. This is a full stack application where a user can log in and out after creating an account. The user is able to create and edit blog posts, and also comment on their blog posts and others. Handlebars.js was used as the templating language, and the structure of the app is built on MVC to help separate concerns. 
 
-  
+  ## Project Link
+  https://infinite-beach-07977.herokuapp.com/
   
   
   ## Languages Used 
