@@ -18,6 +18,7 @@ async function signupFormHandler(event) {
 
         if (response.ok) {
             console.log('success');
+            document.location.replace('/homepage');
 
         } else {
             alert(response.statusText);

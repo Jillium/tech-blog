@@ -73,7 +73,7 @@ router.get('/:id', (req, res) => {
 });
 
 // create a post
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
     // expects {title: 'This is the title', content: 'This is the content', user_id: 1}
     Post.create({
         title: req.body.title,
@@ -88,7 +88,7 @@ router.post('/', (req, res) => {
 });
 
 // update a posts title
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
     Post.update({
         title: req.body.title,
     },
@@ -112,7 +112,8 @@ router.put('/:id', (req, res) => {
 });
 
 // delete a post
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
+    console.log(req.params.id, '-------------------');
     Post.destroy({
         where: {
             id: req.params.id
